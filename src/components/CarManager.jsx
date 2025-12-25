@@ -104,6 +104,7 @@ export default function CarManager() {
   const { currentPhase, getCurrentLights } = useTrafficLight()
   const [cars, setCars] = useState([])
   const [carIdCounter, setCarIdCounter] = useState(0)
+  const [lastPhase, setLastPhase] = useState(currentPhase)
 
   const lights = getCurrentLights()
 
@@ -131,12 +132,33 @@ export default function CarManager() {
   }
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    if (currentPhase !== lastPhase) {
       const availableRoutes = phaseRoutes[currentPhase] || []
       
       if (availableRoutes.length > 0) {
         availableRoutes.forEach(routeKey => {
           spawnCar(routeKey)
+        })
+      }
+      
+      setLastPhase(currentPhase)
+    }
+  }, [currentPhase])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const availableRoutes = phaseRoutes[currentPhase] || []
+      
+      if (availableRoutes.length > 0) {
+        availableRoutes.forEach(routeKey => {
+          const hasCarInRoute = cars.some(car => 
+            car.route.direction === routes[routeKey].direction && 
+            car.route.type === routes[routeKey].type &&
+            !car.isWaiting
+          )
+          if (!hasCarInRoute) {
+            spawnCar(routeKey)
+          }
         })
       }
 
@@ -151,7 +173,7 @@ export default function CarManager() {
     }, 2000)
 
     return () => clearInterval(interval)
-  }, [currentPhase, lights])
+  }, [currentPhase, lights, cars])
 
   useEffect(() => {
     setCars(prevCars => prevCars.map(car => {
