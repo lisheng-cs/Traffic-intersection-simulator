@@ -9,6 +9,13 @@ export default function Intersection() {
   const { getCurrentLights, currentPhase } = useTrafficLight()
   const lights = getCurrentLights()
 
+  const CENTER = '50%'
+  const OFFSET_qs = '36px'
+  const OFFSET_qs1 = '10px'
+  const OFFSET_hs = '110px'
+  const OFFSET_hs1 = '80px'
+  const c = (op, val) => `calc(${CENTER} ${op} ${val})`
+
   const getArrowColor = (direction, type) => {
     const isAllRed = currentPhase.includes('ALL_RED')
     
@@ -90,49 +97,49 @@ export default function Intersection() {
               </marker>
             </defs>
             <TrafficPath
-              d="M 38 0 L 38 100"
+              d={`M ${c('-', OFFSET_hs)} 0 L ${c('-', OFFSET_hs)} 100%`}
               active={isPathActive('north', 'straight')}
               color="#22c55e"
               markerEnd="url(#arrowhead)"
             />
             <TrafficPath
-              d="M 62 100 L 62 0"
+              d={`M ${c('+', OFFSET_hs)} 100% L ${c('+', OFFSET_hs)} 0`}
               active={isPathActive('south', 'straight')}
               color="#22c55e"
               markerEnd="url(#arrowhead)"
             />
             <TrafficPath
-              d="M 100 38 L 0 38"
+              d={`M 100% ${c('-', OFFSET_hs)} L 0 ${c('-', OFFSET_hs)}`}
               active={isPathActive('east', 'straight')}
               color="#22c55e"
               markerEnd="url(#arrowhead)"
             />
             <TrafficPath
-              d="M 0 62 L 100 62"
+              d={`M 0 ${c('+', OFFSET_hs)} L 100% ${c('+', OFFSET_hs)}`}
               active={isPathActive('west', 'straight')}
               color="#22c55e"
               markerEnd="url(#arrowhead)"
             />
             <TrafficPath
-              d="M 46 0 Q 46 54 100 54"
+              d={`M ${c('-', OFFSET_qs)} 0 Q ${c('-', OFFSET_qs)} ${c('+', OFFSET_qs)} 100% ${c('+', OFFSET_qs)}`}
               active={isPathActive('north', 'left')}
               color="#22c55e"
               markerEnd="url(#arrowhead)"
             />
             <TrafficPath
-              d="M 54 100 Q 54 46 0 46"
+              d={`M ${c('+', OFFSET_qs)} 100% Q ${c('+', OFFSET_qs)} ${c('-', OFFSET_qs)} 0 ${c('-', OFFSET_qs)}`}
               active={isPathActive('south', 'left')}
               color="#22c55e"
               markerEnd="url(#arrowhead)"
             />
             <TrafficPath
-              d="M 100 46 Q 54 46 54 100"
+              d={`M 100% ${c('-', OFFSET_qs)} Q ${c('-', OFFSET_qs)} ${c('-', OFFSET_qs)} ${c('-', OFFSET_qs)} 100%`}
               active={isPathActive('east', 'left')}
               color="#22c55e"
               markerEnd="url(#arrowhead)"
             />
             <TrafficPath
-              d="M 0 54 Q 46 54 46 0"
+              d={`M 0 ${c('+', OFFSET_qs)} Q ${c('+', OFFSET_qs)} ${c('+', OFFSET_qs)} ${c('+', OFFSET_qs)} 0`}
               active={isPathActive('west', 'left')}
               color="#22c55e"
               markerEnd="url(#arrowhead)"
@@ -143,52 +150,52 @@ export default function Intersection() {
             type="straight"
             rotation={180}
             color={getArrowColor('north', 'straight')}
-            style={{ left: '38%', top: '12%', zIndex: 10 }}
+            style={{ left: c('-', OFFSET_hs), top: 'calc(12% + 200px)', zIndex: 10 }}
           />
           <TrafficArrow
             type="left"
-            rotation={90}
+            rotation={270}
             color={getArrowColor('north', 'left')}
-            style={{ left: '46%', top: '12%', zIndex: 10 }}
+            style={{ left: c('-', OFFSET_qs), top: 'calc(12% + 200px)', zIndex: 10 }}
           />
 
           <TrafficArrow
             type="straight"
             rotation={0}
             color={getArrowColor('south', 'straight')}
-            style={{ left: '62%', top: '88%', zIndex: 10 }}
+            style={{ left: c('+', OFFSET_hs1), top: 'calc(88% - 250px)', zIndex: 20 }}
           />
           <TrafficArrow
             type="left"
-            rotation={270}
+            rotation={90}
             color={getArrowColor('south', 'left')}
-            style={{ left: '54%', top: '88%', zIndex: 10 }}
+            style={{ left: c('+', OFFSET_qs1), top: 'calc(88% - 250px)', zIndex: 20 }}
           />
 
           <TrafficArrow
             type="straight"
             rotation={270}
             color={getArrowColor('east', 'straight')}
-            style={{ left: '88%', top: '38%', zIndex: 10 }}
+            style={{ left: 'calc(88% - 250px)', top: c('-', OFFSET_hs), zIndex: 10 }}
           />
           <TrafficArrow
             type="left"
-            rotation={180}
+            rotation={0}
             color={getArrowColor('east', 'left')}
-            style={{ left: '88%', top: '46%', zIndex: 10 }}
+            style={{ left: 'calc(88% - 250px)', top: c('-', OFFSET_qs), zIndex: 10 }}
           />
 
           <TrafficArrow
             type="straight"
             rotation={90}
             color={getArrowColor('west', 'straight')}
-            style={{ left: '12%', top: '62%', zIndex: 10 }}
+            style={{ left: 'calc(12% + 200px)', top: c('+', OFFSET_hs1), zIndex: 10 }}
           />
           <TrafficArrow
             type="left"
-            rotation={0}
+            rotation={180}
             color={getArrowColor('west', 'left')}
-            style={{ left: '12%', top: '54%', zIndex: 10 }}
+            style={{ left: 'calc(12% + 200px)', top: c('+', OFFSET_qs1), zIndex: 10 }}
           />
 
           <TrafficLightPole
