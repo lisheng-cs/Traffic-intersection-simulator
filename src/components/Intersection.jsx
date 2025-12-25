@@ -12,7 +12,7 @@ export default function Intersection() {
     const isAllRed = currentPhase.includes('ALL_RED')
     
     if (isAllRed) {
-      return 'text-gray-700 opacity-30'
+      return 'text-gray-600 opacity-40'
     }
 
     const lightState = lights[direction][type]
@@ -22,7 +22,7 @@ export default function Intersection() {
     } else if (lightState === 'yellow') {
       return 'text-yellow-500'
     } else {
-      return 'text-gray-700 opacity-30'
+      return 'text-gray-600 opacity-40'
     }
   }
 
@@ -76,54 +76,54 @@ export default function Intersection() {
 
           <TrafficArrow
             type="straight"
-            rotation={0}
+            rotation={180}
             color={getArrowColor('north', 'straight')}
-            style={{ left: 'calc(50% + 16px)', top: '20%', zIndex: 10 }}
+            style={{ left: 'calc(50% + 24px)', top: '15%', zIndex: 10 }}
           />
           <TrafficArrow
             type="left"
             rotation={90}
             color={getArrowColor('north', 'left')}
-            style={{ left: 'calc(50% - 16px)', top: '20%', zIndex: 10 }}
+            style={{ left: 'calc(50% - 24px)', top: '15%', zIndex: 10 }}
           />
 
           <TrafficArrow
             type="straight"
-            rotation={180}
+            rotation={0}
             color={getArrowColor('south', 'straight')}
-            style={{ left: 'calc(50% - 16px)', top: '80%', zIndex: 10 }}
+            style={{ left: 'calc(50% - 24px)', top: '85%', zIndex: 10 }}
           />
           <TrafficArrow
             type="left"
             rotation={270}
             color={getArrowColor('south', 'left')}
-            style={{ left: 'calc(50% + 16px)', top: '80%', zIndex: 10 }}
-          />
-
-          <TrafficArrow
-            type="straight"
-            rotation={90}
-            color={getArrowColor('east', 'straight')}
-            style={{ left: '80%', top: 'calc(50% - 16px)', zIndex: 10 }}
-          />
-          <TrafficArrow
-            type="left"
-            rotation={180}
-            color={getArrowColor('east', 'left')}
-            style={{ left: '80%', top: 'calc(50% + 16px)', zIndex: 10 }}
+            style={{ left: 'calc(50% + 24px)', top: '85%', zIndex: 10 }}
           />
 
           <TrafficArrow
             type="straight"
             rotation={270}
+            color={getArrowColor('east', 'straight')}
+            style={{ left: '85%', top: 'calc(50% - 24px)', zIndex: 10 }}
+          />
+          <TrafficArrow
+            type="left"
+            rotation={180}
+            color={getArrowColor('east', 'left')}
+            style={{ left: '85%', top: 'calc(50% + 24px)', zIndex: 10 }}
+          />
+
+          <TrafficArrow
+            type="straight"
+            rotation={90}
             color={getArrowColor('west', 'straight')}
-            style={{ left: '20%', top: 'calc(50% + 16px)', zIndex: 10 }}
+            style={{ left: '15%', top: 'calc(50% + 24px)', zIndex: 10 }}
           />
           <TrafficArrow
             type="left"
             rotation={0}
             color={getArrowColor('west', 'left')}
-            style={{ left: '20%', top: 'calc(50% - 16px)', zIndex: 10 }}
+            style={{ left: '15%', top: 'calc(50% - 24px)', zIndex: 10 }}
           />
 
           <TrafficLightPole
