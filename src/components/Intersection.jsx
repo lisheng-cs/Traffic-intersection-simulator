@@ -1,57 +1,134 @@
 import React from 'react'
 import TrafficLightPole from './TrafficLightPole'
-import CarManager from './CarManager'
+import TrafficArrow from './TrafficArrow'
 import { useTrafficLight } from '../context/TrafficLightContext'
+import { PHASES } from '../constants/phases'
 
 export default function Intersection() {
-  const { getCurrentLights } = useTrafficLight()
+  const { getCurrentLights, currentPhase } = useTrafficLight()
   const lights = getCurrentLights()
+
+  const getArrowColor = (direction, type) => {
+    const isAllRed = currentPhase.includes('ALL_RED')
+    
+    if (isAllRed) {
+      return 'text-gray-700 opacity-30'
+    }
+
+    const lightState = lights[direction][type]
+    
+    if (lightState === 'green') {
+      return 'text-green-500 drop-shadow-[0_0_8px_rgba(34,197,94,0.8)]'
+    } else if (lightState === 'yellow') {
+      return 'text-yellow-500'
+    } else {
+      return 'text-gray-700 opacity-30'
+    }
+  }
 
   return (
     <div className="relative w-full max-w-5xl aspect-square mx-auto">
       <div className="absolute inset-0 bg-gray-800 rounded-lg overflow-hidden shadow-2xl">
         <div className="relative w-full h-full">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-56 h-1/2 bg-gray-700 border-l-2 border-r-2 border-gray-500">
-            <div className="absolute bottom-0 left-0 right-0 h-4 bg-white" />
-            <div className="absolute bottom-16 left-0 right-0 h-1 border-t-2 border-dashed border-white" />
-            <div className="absolute bottom-32 left-0 right-0 h-1 border-t-2 border-dashed border-white" />
-            <div className="absolute bottom-48 left-0 right-0 h-1 border-t-2 border-dashed border-white" />
-            <div className="absolute bottom-64 left-0 right-0 h-1 border-t-2 border-dashed border-white" />
-            <div className="absolute bottom-80 left-0 right-0 h-1 border-t-2 border-dashed border-white" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-1/2 bg-gray-700 border-l-2 border-r-2 border-gray-500">
+            <div className="absolute bottom-0 left-0 right-0 h-6 bg-white" />
+            <div className="absolute bottom-24 left-0 right-0 h-1 border-t-2 border-dashed border-white" />
+            <div className="absolute bottom-40 left-0 right-0 h-1 border-t-2 border-dashed border-white" />
+            <div className="absolute bottom-56 left-0 right-0 h-1 border-t-2 border-dashed border-white" />
+            <div className="absolute bottom-72 left-0 right-0 h-1 border-t-2 border-dashed border-white" />
+            <div className="absolute bottom-88 left-0 right-0 h-1 border-t-2 border-dashed border-white" />
+            <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-yellow-500" />
+            <div className="absolute left-1/2 -translate-x-[calc(50%+2px)] top-0 bottom-0 w-0.5 bg-yellow-500" />
           </div>
 
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-56 h-1/2 bg-gray-700 border-l-2 border-r-2 border-gray-500">
-            <div className="absolute top-0 left-0 right-0 h-4 bg-white" />
-            <div className="absolute top-16 left-0 right-0 h-1 border-b-2 border-dashed border-white" />
-            <div className="absolute top-32 left-0 right-0 h-1 border-b-2 border-dashed border-white" />
-            <div className="absolute top-48 left-0 right-0 h-1 border-b-2 border-dashed border-white" />
-            <div className="absolute top-64 left-0 right-0 h-1 border-b-2 border-dashed border-white" />
-            <div className="absolute top-80 left-0 right-0 h-1 border-b-2 border-dashed border-white" />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-64 h-1/2 bg-gray-700 border-l-2 border-r-2 border-gray-500">
+            <div className="absolute top-0 left-0 right-0 h-6 bg-white" />
+            <div className="absolute top-24 left-0 right-0 h-1 border-b-2 border-dashed border-white" />
+            <div className="absolute top-40 left-0 right-0 h-1 border-b-2 border-dashed border-white" />
+            <div className="absolute top-56 left-0 right-0 h-1 border-b-2 border-dashed border-white" />
+            <div className="absolute top-72 left-0 right-0 h-1 border-b-2 border-dashed border-white" />
+            <div className="absolute top-88 left-0 right-0 h-1 border-b-2 border-dashed border-white" />
+            <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-yellow-500" />
+            <div className="absolute left-1/2 -translate-x-[calc(50%+2px)] top-0 bottom-0 w-0.5 bg-yellow-500" />
           </div>
 
-          <div className="absolute left-0 top-1/2 -translate-y-1/2 h-56 w-1/2 bg-gray-700 border-t-2 border-b-2 border-gray-500">
-            <div className="absolute right-0 top-0 bottom-0 w-4 bg-white" />
-            <div className="absolute right-16 top-0 bottom-0 w-1 border-r-2 border-dashed border-white" />
-            <div className="absolute right-32 top-0 bottom-0 w-1 border-r-2 border-dashed border-white" />
-            <div className="absolute right-48 top-0 bottom-0 w-1 border-r-2 border-dashed border-white" />
-            <div className="absolute right-64 top-0 bottom-0 w-1 border-r-2 border-dashed border-white" />
-            <div className="absolute right-80 top-0 bottom-0 w-1 border-r-2 border-dashed border-white" />
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 h-64 w-1/2 bg-gray-700 border-t-2 border-b-2 border-gray-500">
+            <div className="absolute right-0 top-0 bottom-0 w-6 bg-white" />
+            <div className="absolute right-24 top-0 bottom-0 w-1 border-r-2 border-dashed border-white" />
+            <div className="absolute right-40 top-0 bottom-0 w-1 border-r-2 border-dashed border-white" />
+            <div className="absolute right-56 top-0 bottom-0 w-1 border-r-2 border-dashed border-white" />
+            <div className="absolute right-72 top-0 bottom-0 w-1 border-r-2 border-dashed border-white" />
+            <div className="absolute right-88 top-0 bottom-0 w-1 border-r-2 border-dashed border-white" />
+            <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 h-0.5 bg-yellow-500" />
+            <div className="absolute top-1/2 -translate-y-[calc(50%+2px)] left-0 right-0 h-0.5 bg-yellow-500" />
           </div>
 
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 h-56 w-1/2 bg-gray-700 border-t-2 border-b-2 border-gray-500">
-            <div className="absolute left-0 top-0 bottom-0 w-4 bg-white" />
-            <div className="absolute left-16 top-0 bottom-0 w-1 border-l-2 border-dashed border-white" />
-            <div className="absolute left-32 top-0 bottom-0 w-1 border-l-2 border-dashed border-white" />
-            <div className="absolute left-48 top-0 bottom-0 w-1 border-l-2 border-dashed border-white" />
-            <div className="absolute left-64 top-0 bottom-0 w-1 border-l-2 border-dashed border-white" />
-            <div className="absolute left-80 top-0 bottom-0 w-1 border-l-2 border-dashed border-white" />
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 h-64 w-1/2 bg-gray-700 border-t-2 border-b-2 border-gray-500">
+            <div className="absolute left-0 top-0 bottom-0 w-6 bg-white" />
+            <div className="absolute left-24 top-0 bottom-0 w-1 border-l-2 border-dashed border-white" />
+            <div className="absolute left-40 top-0 bottom-0 w-1 border-l-2 border-dashed border-white" />
+            <div className="absolute left-56 top-0 bottom-0 w-1 border-l-2 border-dashed border-white" />
+            <div className="absolute left-72 top-0 bottom-0 w-1 border-l-2 border-dashed border-white" />
+            <div className="absolute left-88 top-0 bottom-0 w-1 border-l-2 border-dashed border-white" />
+            <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 h-0.5 bg-yellow-500" />
+            <div className="absolute top-1/2 -translate-y-[calc(50%+2px)] left-0 right-0 h-0.5 bg-yellow-500" />
           </div>
 
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 bg-gray-600 rounded-lg" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gray-600 rounded-lg" />
 
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 border-4 border-dashed border-yellow-400 rounded-full opacity-30" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 border-4 border-dashed border-yellow-400 rounded-full opacity-30" />
 
-          <CarManager />
+          <TrafficArrow
+            type="straight"
+            rotation={0}
+            color={getArrowColor('north', 'straight')}
+            style={{ left: 'calc(50% + 16px)', top: '20%', zIndex: 10 }}
+          />
+          <TrafficArrow
+            type="left"
+            rotation={90}
+            color={getArrowColor('north', 'left')}
+            style={{ left: 'calc(50% - 16px)', top: '20%', zIndex: 10 }}
+          />
+
+          <TrafficArrow
+            type="straight"
+            rotation={180}
+            color={getArrowColor('south', 'straight')}
+            style={{ left: 'calc(50% - 16px)', top: '80%', zIndex: 10 }}
+          />
+          <TrafficArrow
+            type="left"
+            rotation={270}
+            color={getArrowColor('south', 'left')}
+            style={{ left: 'calc(50% + 16px)', top: '80%', zIndex: 10 }}
+          />
+
+          <TrafficArrow
+            type="straight"
+            rotation={90}
+            color={getArrowColor('east', 'straight')}
+            style={{ left: '80%', top: 'calc(50% - 16px)', zIndex: 10 }}
+          />
+          <TrafficArrow
+            type="left"
+            rotation={180}
+            color={getArrowColor('east', 'left')}
+            style={{ left: '80%', top: 'calc(50% + 16px)', zIndex: 10 }}
+          />
+
+          <TrafficArrow
+            type="straight"
+            rotation={270}
+            color={getArrowColor('west', 'straight')}
+            style={{ left: '20%', top: 'calc(50% + 16px)', zIndex: 10 }}
+          />
+          <TrafficArrow
+            type="left"
+            rotation={0}
+            color={getArrowColor('west', 'left')}
+            style={{ left: '20%', top: 'calc(50% - 16px)', zIndex: 10 }}
+          />
 
           <TrafficLightPole
             position="north"

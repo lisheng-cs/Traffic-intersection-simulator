@@ -1,12 +1,16 @@
 export const PHASES = {
   NS_STRAIGHT: 'NS_STRAIGHT',
   NS_STRAIGHT_YELLOW: 'NS_STRAIGHT_YELLOW',
+  ALL_RED_1: 'ALL_RED_1',
   NS_LEFT: 'NS_LEFT',
   NS_LEFT_YELLOW: 'NS_LEFT_YELLOW',
+  ALL_RED_2: 'ALL_RED_2',
   EW_STRAIGHT: 'EW_STRAIGHT',
   EW_STRAIGHT_YELLOW: 'EW_STRAIGHT_YELLOW',
+  ALL_RED_3: 'ALL_RED_3',
   EW_LEFT: 'EW_LEFT',
-  EW_LEFT_YELLOW: 'EW_LEFT_YELLOW'
+  EW_LEFT_YELLOW: 'EW_LEFT_YELLOW',
+  ALL_RED_4: 'ALL_RED_4'
 }
 
 export const PHASE_CONFIG = {
@@ -26,6 +30,16 @@ export const PHASE_CONFIG = {
     lights: {
       north: { straight: 'yellow', left: 'red' },
       south: { straight: 'yellow', left: 'red' },
+      east: { straight: 'red', left: 'red' },
+      west: { straight: 'red', left: 'red' }
+    }
+  },
+  [PHASES.ALL_RED_1]: {
+    name: '全红缓冲',
+    duration: 2,
+    lights: {
+      north: { straight: 'red', left: 'red' },
+      south: { straight: 'red', left: 'red' },
       east: { straight: 'red', left: 'red' },
       west: { straight: 'red', left: 'red' }
     }
@@ -50,6 +64,16 @@ export const PHASE_CONFIG = {
       west: { straight: 'red', left: 'red' }
     }
   },
+  [PHASES.ALL_RED_2]: {
+    name: '全红缓冲',
+    duration: 2,
+    lights: {
+      north: { straight: 'red', left: 'red' },
+      south: { straight: 'red', left: 'red' },
+      east: { straight: 'red', left: 'red' },
+      west: { straight: 'red', left: 'red' }
+    }
+  },
   [PHASES.EW_STRAIGHT]: {
     name: '东西直行通行',
     duration: 10,
@@ -68,6 +92,16 @@ export const PHASE_CONFIG = {
       south: { straight: 'red', left: 'red' },
       east: { straight: 'yellow', left: 'red' },
       west: { straight: 'yellow', left: 'red' }
+    }
+  },
+  [PHASES.ALL_RED_3]: {
+    name: '全红缓冲',
+    duration: 2,
+    lights: {
+      north: { straight: 'red', left: 'red' },
+      south: { straight: 'red', left: 'red' },
+      east: { straight: 'red', left: 'red' },
+      west: { straight: 'red', left: 'red' }
     }
   },
   [PHASES.EW_LEFT]: {
@@ -89,16 +123,30 @@ export const PHASE_CONFIG = {
       east: { straight: 'red', left: 'yellow' },
       west: { straight: 'red', left: 'yellow' }
     }
+  },
+  [PHASES.ALL_RED_4]: {
+    name: '全红缓冲',
+    duration: 2,
+    lights: {
+      north: { straight: 'red', left: 'red' },
+      south: { straight: 'red', left: 'red' },
+      east: { straight: 'red', left: 'red' },
+      west: { straight: 'red', left: 'red' }
+    }
   }
 }
 
 export const PHASE_SEQUENCE = [
   PHASES.NS_STRAIGHT,
   PHASES.NS_STRAIGHT_YELLOW,
+  PHASES.ALL_RED_1,
   PHASES.NS_LEFT,
   PHASES.NS_LEFT_YELLOW,
+  PHASES.ALL_RED_2,
   PHASES.EW_STRAIGHT,
   PHASES.EW_STRAIGHT_YELLOW,
+  PHASES.ALL_RED_3,
   PHASES.EW_LEFT,
-  PHASES.EW_LEFT_YELLOW
+  PHASES.EW_LEFT_YELLOW,
+  PHASES.ALL_RED_4
 ]
