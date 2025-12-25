@@ -1,6 +1,7 @@
 import React from 'react'
 import TrafficLightPole from './TrafficLightPole'
 import TrafficArrow from './TrafficArrow'
+import TrafficPath from './TrafficPath'
 import { useTrafficLight } from '../context/TrafficLightContext'
 import { PHASES } from '../constants/phases'
 
@@ -24,6 +25,14 @@ export default function Intersection() {
     } else {
       return 'text-gray-600 opacity-40'
     }
+  }
+
+  const isPathActive = (direction, type) => {
+    const isAllRed = currentPhase.includes('ALL_RED')
+    if (isAllRed) return false
+    
+    const lightState = lights[direction][type]
+    return lightState === 'green'
   }
 
   return (
@@ -73,6 +82,49 @@ export default function Intersection() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-gray-600 rounded-lg" />
 
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 border-4 border-dashed border-yellow-400 rounded-full opacity-30" />
+
+          <svg className="absolute top-0 left-0 w-full h-full pointer-events-none" style={{ zIndex: 5 }}>
+            <TrafficPath
+              d="M 50 0 L 50 50"
+              active={isPathActive('north', 'straight')}
+              color="#22c55e"
+            />
+            <TrafficPath
+              d="M 50 100 L 50 50"
+              active={isPathActive('south', 'straight')}
+              color="#22c55e"
+            />
+            <TrafficPath
+              d="M 100 50 L 50 50"
+              active={isPathActive('east', 'straight')}
+              color="#22c55e"
+            />
+            <TrafficPath
+              d="M 0 50 L 50 50"
+              active={isPathActive('west', 'straight')}
+              color="#22c55e"
+            />
+            <TrafficPath
+              d="M 38.75 0 C 38.75 25, 25 38.75, 0 38.75"
+              active={isPathActive('north', 'left')}
+              color="#22c55e"
+            />
+            <TrafficPath
+              d="M 61.25 100 C 61.25 75, 75 61.25, 100 61.25"
+              active={isPathActive('south', 'left')}
+              color="#22c55e"
+            />
+            <TrafficPath
+              d="M 100 61.25 C 75 61.25, 61.25 75, 61.25 100"
+              active={isPathActive('east', 'left')}
+              color="#22c55e"
+            />
+            <TrafficPath
+              d="M 0 38.75 C 25 38.75, 38.75 25, 38.75 0"
+              active={isPathActive('west', 'left')}
+              color="#22c55e"
+            />
+          </svg>
 
           <TrafficArrow
             type="straight"
