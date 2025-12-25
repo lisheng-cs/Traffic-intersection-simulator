@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function TrafficPath({ d, active, color }) {
+export default function TrafficPath({ d, active, color, markerEnd }) {
   return (
     <path
       d={d}
@@ -8,10 +8,11 @@ export default function TrafficPath({ d, active, color }) {
       strokeWidth="4"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className={`transition-all duration-500 ${active ? 'opacity-100' : 'opacity-10'}`}
+      markerEnd={markerEnd}
+      className={`transition-all duration-500 ${active ? 'opacity-100' : 'opacity-0'}`}
       style={{
-        stroke: active ? color : '#6b7280',
-        strokeDasharray: active ? '12 8' : '8 8',
+        stroke: active ? color : 'transparent',
+        strokeDasharray: active ? '12 8' : 'none',
         animation: active ? 'dash 1s linear infinite' : 'none'
       }}
     />
