@@ -30,51 +30,47 @@ export default function Intersection() {
     <div className="relative w-full max-w-5xl aspect-square mx-auto">
       <div className="absolute inset-0 bg-gray-800 rounded-lg overflow-hidden shadow-2xl">
         <div className="relative w-full h-full">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-1/2 bg-gray-700 border-l-2 border-r-2 border-gray-500">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-72 h-1/2 bg-gray-700">
             <div className="absolute bottom-0 left-0 right-0 h-6 bg-white" />
-            <div className="absolute bottom-24 left-0 right-0 h-1 border-t-2 border-dashed border-white" />
-            <div className="absolute bottom-40 left-0 right-0 h-1 border-t-2 border-dashed border-white" />
-            <div className="absolute bottom-56 left-0 right-0 h-1 border-t-2 border-dashed border-white" />
-            <div className="absolute bottom-72 left-0 right-0 h-1 border-t-2 border-dashed border-white" />
-            <div className="absolute bottom-88 left-0 right-0 h-1 border-t-2 border-dashed border-white" />
-            <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-yellow-500" />
-            <div className="absolute left-1/2 -translate-x-[calc(50%+2px)] top-0 bottom-0 w-0.5 bg-yellow-500" />
+            <div className="absolute bottom-0 left-0 right-0 h-4 bg-yellow-400" />
+            <div className="absolute bottom-4 left-0 right-0 h-4 bg-yellow-400" />
+            <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-8 w-0.5 bg-yellow-500" />
+            <div className="absolute left-1/2 -translate-x-[calc(50%+2px)] top-0 bottom-8 w-0.5 bg-yellow-500" />
+            <div className="absolute left-1/4 top-0 bottom-8 w-0.5 border-r-2 border-dashed border-white" />
+            <div className="absolute left-3/4 top-0 bottom-8 w-0.5 border-r-2 border-dashed border-white" />
           </div>
 
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-64 h-1/2 bg-gray-700 border-l-2 border-r-2 border-gray-500">
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-72 h-1/2 bg-gray-700">
             <div className="absolute top-0 left-0 right-0 h-6 bg-white" />
-            <div className="absolute top-24 left-0 right-0 h-1 border-b-2 border-dashed border-white" />
-            <div className="absolute top-40 left-0 right-0 h-1 border-b-2 border-dashed border-white" />
-            <div className="absolute top-56 left-0 right-0 h-1 border-b-2 border-dashed border-white" />
-            <div className="absolute top-72 left-0 right-0 h-1 border-b-2 border-dashed border-white" />
-            <div className="absolute top-88 left-0 right-0 h-1 border-b-2 border-dashed border-white" />
-            <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-yellow-500" />
-            <div className="absolute left-1/2 -translate-x-[calc(50%+2px)] top-0 bottom-0 w-0.5 bg-yellow-500" />
+            <div className="absolute top-4 left-0 right-0 h-4 bg-yellow-400" />
+            <div className="absolute top-8 left-0 right-0 h-4 bg-yellow-400" />
+            <div className="absolute left-1/2 -translate-x-1/2 top-12 bottom-0 w-0.5 bg-yellow-500" />
+            <div className="absolute left-1/2 -translate-x-[calc(50%+2px)] top-12 bottom-0 w-0.5 bg-yellow-500" />
+            <div className="absolute left-1/4 top-12 bottom-0 w-0.5 border-r-2 border-dashed border-white" />
+            <div className="absolute left-3/4 top-12 bottom-0 w-0.5 border-r-2 border-dashed border-white" />
           </div>
 
-          <div className="absolute left-0 top-1/2 -translate-y-1/2 h-64 w-1/2 bg-gray-700 border-t-2 border-b-2 border-gray-500">
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 h-72 w-1/2 bg-gray-700">
             <div className="absolute right-0 top-0 bottom-0 w-6 bg-white" />
-            <div className="absolute right-24 top-0 bottom-0 w-1 border-r-2 border-dashed border-white" />
-            <div className="absolute right-40 top-0 bottom-0 w-1 border-r-2 border-dashed border-white" />
-            <div className="absolute right-56 top-0 bottom-0 w-1 border-r-2 border-dashed border-white" />
-            <div className="absolute right-72 top-0 bottom-0 w-1 border-r-2 border-dashed border-white" />
-            <div className="absolute right-88 top-0 bottom-0 w-1 border-r-2 border-dashed border-white" />
-            <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 h-0.5 bg-yellow-500" />
-            <div className="absolute top-1/2 -translate-y-[calc(50%+2px)] left-0 right-0 h-0.5 bg-yellow-500" />
+            <div className="absolute right-0 top-0 bottom-0 w-4 bg-yellow-400" />
+            <div className="absolute right-4 top-0 bottom-0 w-4 bg-yellow-400" />
+            <div className="absolute top-1/2 -translate-y-1/2 left-0 right-8 h-0.5 bg-yellow-500" />
+            <div className="absolute top-1/2 -translate-y-[calc(50%+2px)] left-0 right-8 h-0.5 bg-yellow-500" />
+            <div className="absolute top-1/4 left-0 right-8 h-0.5 border-b-2 border-dashed border-white" />
+            <div className="absolute top-3/4 left-0 right-8 h-0.5 border-b-2 border-dashed border-white" />
           </div>
 
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 h-64 w-1/2 bg-gray-700 border-t-2 border-b-2 border-gray-500">
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 h-72 w-1/2 bg-gray-700">
             <div className="absolute left-0 top-0 bottom-0 w-6 bg-white" />
-            <div className="absolute left-24 top-0 bottom-0 w-1 border-l-2 border-dashed border-white" />
-            <div className="absolute left-40 top-0 bottom-0 w-1 border-l-2 border-dashed border-white" />
-            <div className="absolute left-56 top-0 bottom-0 w-1 border-l-2 border-dashed border-white" />
-            <div className="absolute left-72 top-0 bottom-0 w-1 border-l-2 border-dashed border-white" />
-            <div className="absolute left-88 top-0 bottom-0 w-1 border-l-2 border-dashed border-white" />
-            <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 h-0.5 bg-yellow-500" />
-            <div className="absolute top-1/2 -translate-y-[calc(50%+2px)] left-0 right-0 h-0.5 bg-yellow-500" />
+            <div className="absolute left-4 top-0 bottom-0 w-4 bg-yellow-400" />
+            <div className="absolute left-8 top-0 bottom-0 w-4 bg-yellow-400" />
+            <div className="absolute top-1/2 -translate-y-1/2 left-12 right-0 h-0.5 bg-yellow-500" />
+            <div className="absolute top-1/2 -translate-y-[calc(50%+2px)] left-12 right-0 h-0.5 bg-yellow-500" />
+            <div className="absolute top-1/4 left-12 right-0 h-0.5 border-b-2 border-dashed border-white" />
+            <div className="absolute top-3/4 left-12 right-0 h-0.5 border-b-2 border-dashed border-white" />
           </div>
 
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gray-600 rounded-lg" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-gray-600 rounded-lg" />
 
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 border-4 border-dashed border-yellow-400 rounded-full opacity-30" />
 
